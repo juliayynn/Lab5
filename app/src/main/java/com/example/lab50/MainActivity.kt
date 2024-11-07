@@ -12,6 +12,7 @@ import androidx.core.view.WindowInsetsCompat
 import android.widget.TextView
 import android.widget.Toast
 import android.view.View
+import android.content.Intent
 
 class MainActivity : AppCompatActivity() {
 
@@ -90,9 +91,13 @@ class MainActivity : AppCompatActivity() {
         // Вычисляем общую стоимость
         val totalCost = pages * pricePerPage
 
+        val intent = Intent(this, result::class.java).apply{
+            putExtra("RESULT_COST", totalCost)
+        }
+        startActivity (intent)
         // Устанавливаем результат в TextView
-        textViewResult.text = "Сумма заказа = $totalCost руб."
+        //textViewResult.text = "Сумма заказа = $totalCost руб."
 
-        textViewResult.visibility = View.VISIBLE // Делаем TextView видимым
+        //textViewResult.visibility = View.VISIBLE // Делаем TextView видимым
     }
 }
